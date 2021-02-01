@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<title>Slide</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+
+</style>
+<body>
+    <div class="w3-content w3-display-container">
+        <img class="mySlides" src="https://thumbs.dreamstime.com/b/paris-eiffel-tower-city-world-where-starving-to-death-still-considered-to-be-art-43024327.jpg" style="width:100%">
+        <img class="mySlides" src="https://backpackeradvice.com/img/Santorini.jpg " style="width:100%">
+        <img class="mySlides" src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/Hotel%20Management-1508949476/mercuremaldiveskoodooresortmaldivesexterior.jpg?WWgDUsRsMcW_pe0hMJIE2bW06qaPPNMI&itok=U5WkdR5g" style="width:100%" />
+        <img class="mySlides" src="https://eatsleepbreathetravel.com/wp-content/uploads/2019/07/Thira-5-of-15-1024x678.jpg " style="width:100%" />
+
+        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+        <button id="play" onclick="repeat()">Play</button>
+        <button id="pause">Pause</button>
+    </div>
+
+    <script>
+        let pause = document.getElementById('pause');
+        let slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n=1) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            let x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (let i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+        let interval;
+        let repeat = function () {
+             interval = setInterval(function () {
+                showDivs(slideIndex)
+                slideIndex++;
+                if (slideIndex > 4) { slideIndex = 1 }
+                
+            }, 2000);
+        }
+       pause.addEventListener('click', ()=>clearInterval(interval))
+    </script>
+
+</body>
+</html>
