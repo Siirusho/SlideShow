@@ -1,19 +1,71 @@
 <!DOCTYPE html>
-<html>
-<title>Slide</title>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Image Slider</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #6995D2;
+        }
 
-</style>
+        .slider {
+            width: 800px;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .slides {
+            width: 500%;
+            height: 500px;
+            display: flex;
+        }
+
+        .slide {
+            width: 20%;
+            transition: 2s;
+        }
+
+            .slide img {
+                width: 800px;
+                height: 500px;
+            }
+
+        #play {
+            margin: 0
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
 <body>
-    <div class="w3-content w3-display-container">
-        <img class="mySlides" src="https://thumbs.dreamstime.com/b/paris-eiffel-tower-city-world-where-starving-to-death-still-considered-to-be-art-43024327.jpg" style="width:100%">
-        <img class="mySlides" src="https://backpackeradvice.com/img/Santorini.jpg " style="width:100%">
-        <img class="mySlides" src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/Hotel%20Management-1508949476/mercuremaldiveskoodooresortmaldivesexterior.jpg?WWgDUsRsMcW_pe0hMJIE2bW06qaPPNMI&itok=U5WkdR5g" style="width:100%" />
-        <img class="mySlides" src="https://eatsleepbreathetravel.com/wp-content/uploads/2019/07/Thira-5-of-15-1024x678.jpg " style="width:100%" />
-
+    <div class="slider">
+        <div class="slides">
+            <div class="slide first">
+                <img src="https://thumbs.dreamstime.com/b/paris-eiffel-tower-city-world-where-starving-to-death-still-considered-to-be-art-43024327.jpg" style="width:100%">
+            </div>
+            <div class="slide">
+                <img src="https://backpackeradvice.com/img/Santorini.jpg " style="width:100%">
+            </div>
+            <div class="slide">
+                <img src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/Hotel%20Management-1508949476/mercuremaldiveskoodooresortmaldivesexterior.jpg?WWgDUsRsMcW_pe0hMJIE2bW06qaPPNMI&itok=U5WkdR5g" style="width:100%" />
+            </div>
+            <div class="slide">
+                <img src="https://eatsleepbreathetravel.com/wp-content/uploads/2019/07/Thira-5-of-15-1024x678.jpg " style="width:100%" />
+            </div>
+        </div>
         <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
         <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+    </div>
+
+    <div class="nav">
         <button id="play" onclick="repeat()">Play</button>
         <button id="pause">Pause</button>
     </div>
@@ -23,12 +75,12 @@
         let slideIndex = 1;
         showDivs(slideIndex);
 
-        function plusDivs(n=1) {
+        function plusDivs(n = 1) {
             showDivs(slideIndex += n);
         }
 
         function showDivs(n) {
-            let x = document.getElementsByClassName("mySlides");
+            let x = document.getElementsByClassName("slide");
             if (n > x.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = x.length }
             for (let i = 0; i < x.length; i++) {
@@ -36,16 +88,18 @@
             }
             x[slideIndex - 1].style.display = "block";
         }
+
         let interval;
         let repeat = function () {
-             interval = setInterval(function () {
+            interval = setInterval(function () {
                 showDivs(slideIndex)
                 slideIndex++;
                 if (slideIndex > 4) { slideIndex = 1 }
-                
+
             }, 2000);
         }
-       pause.addEventListener('click', ()=>clearInterval(interval))
+        pause.addEventListener('click', () => clearInterval(interval))
+
     </script>
 
 </body>
